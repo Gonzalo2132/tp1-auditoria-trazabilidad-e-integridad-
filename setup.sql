@@ -7,7 +7,9 @@
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
+-- Acá configuro algunas opciones antes de crear y cargar las tablas.
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+-- Inicio una transacción para aplicar estos cambios juntos cuando llegue al COMMIT.
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +26,8 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `inventario`
+-- Acá creo la tabla de inventario con el nombre, la cantidad y el estado de cada fruta.
+-- También guardo su huella; el campo eliminado me sirve para hacer una baja lógica.
 --
 
 CREATE TABLE `inventario` (
@@ -37,7 +40,7 @@ CREATE TABLE `inventario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `inventario`
+-- Acá cargo algunos datos de ejemplo para iniciar el inventario.
 --
 
 INSERT INTO `inventario` (`id`, `fruta`, `cantidad`, `eliminado`, `hash_control`, `fecha_creacion`) VALUES
@@ -48,7 +51,8 @@ INSERT INTO `inventario` (`id`, `fruta`, `cantidad`, `eliminado`, `hash_control`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `trazabilidad`
+-- Ahora creo la tabla de trazabilidad para guardar quién hizo cada operación y cuándo.
+-- También guardo el tipo y el detalle; la dirección IP es opcional.
 --
 
 CREATE TABLE `trazabilidad` (
@@ -61,7 +65,7 @@ CREATE TABLE `trazabilidad` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `trazabilidad`
+-- Acá agrego ejemplos de operaciones que ya se hicieron en el inventario.
 --
 
 INSERT INTO `trazabilidad` (`id`, `usuario`, `fecha_hora`, `tipo_accion`, `detalles`, `ip_usuario`) VALUES
@@ -74,14 +78,14 @@ INSERT INTO `trazabilidad` (`id`, `usuario`, `fecha_hora`, `tipo_accion`, `detal
 --
 
 --
--- Indices de la tabla `inventario`
+-- Defino el identificador principal y evito que se repita el nombre de una fruta.
 --
 ALTER TABLE `inventario`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `fruta` (`fruta`);
 
 --
--- Indices de la tabla `trazabilidad`
+-- Defino el identificador principal para cada registro de trazabilidad.
 --
 ALTER TABLE `trazabilidad`
   ADD PRIMARY KEY (`id`);
@@ -91,13 +95,13 @@ ALTER TABLE `trazabilidad`
 --
 
 --
--- AUTO_INCREMENT de la tabla `inventario`
+-- Configuro el identificador del inventario para que se genere automáticamente.
 --
 ALTER TABLE `inventario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `trazabilidad`
+-- Configuro el identificador de trazabilidad para que también se genere automáticamente.
 --
 ALTER TABLE `trazabilidad`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;

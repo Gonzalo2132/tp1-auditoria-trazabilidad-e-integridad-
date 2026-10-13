@@ -1,16 +1,19 @@
 * {
+    /* Acá saco los márgenes predeterminados y hago más fácil calcular los tamaños. */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
+    /* Acá elijo la letra, el color de fondo y el espacio alrededor de la página. */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f0f4f8;
     padding: 20px;
 }
 
 .container {
+    /* Centro el contenido y lo pongo dentro de un panel blanco. */
     max-width: 800px;
     margin: 0 auto;
     background: white;
@@ -20,6 +23,7 @@ body {
 }
 
 header {
+    /* Centro el encabezado y lo separo del resto con una línea. */
     text-align: center;
     margin-bottom: 30px;
     padding-bottom: 20px;
@@ -36,7 +40,7 @@ header p {
     margin-top: 5px;
 }
 
-/* Mensajes */
+/* Acá defino el aspecto de los mensajes y distingo si son de éxito, error o alerta. */
 .mensaje {
     padding: 12px 20px;
     margin: 10px 0;
@@ -69,7 +73,7 @@ header p {
     font-weight: bold;
 }
 
-/* Grid de tarjetas */
+/* Acá acomodo las frutas en una cuadrícula y dejo espacio entre las tarjetas. */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -78,6 +82,7 @@ header p {
 }
 
 .card {
+    /* Acá doy estilo a cada tarjeta que muestra la fruta y su stock. */
     background: #f7fafc;
     padding: 20px;
     text-align: center;
@@ -87,6 +92,7 @@ header p {
 }
 
 .card:hover {
+    /* Si paso el cursor por encima, levanto un poco la tarjeta para resaltarla. */
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
@@ -110,6 +116,7 @@ header p {
 }
 
 .btn-eliminar {
+    /* Hago que el enlace para eliminar parezca un botón. */
     color: #e53e3e;
     text-decoration: none;
     font-size: 0.9rem;
@@ -124,7 +131,7 @@ header p {
     background: #fed7d7;
 }
 
-/* Formulario */
+/* Acá doy formato al panel del formulario para registrar movimientos. */
 .formulario {
     background: #f7fafc;
     padding: 25px;
@@ -149,6 +156,7 @@ label {
 }
 
 select, input {
+    /* Hago que los campos ocupen todo el ancho y tengan el mismo estilo. */
     width: 100%;
     padding: 10px;
     border: 1px solid #e2e8f0;
@@ -157,18 +165,21 @@ select, input {
 }
 
 select:focus, input:focus {
+    /* Resalto el campo que estoy usando para que se vea dónde estoy escribiendo. */
     outline: none;
     border-color: #4299e1;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
 }
 
 .botones {
+    /* En pantallas grandes pongo uno al lado del otro los botones de agregar y retirar. */
     display: flex;
     gap: 10px;
     margin: 15px 0;
 }
 
 .btn {
+    /* Acá defino el formato que comparten los botones del formulario. */
     padding: 12px 25px;
     border: none;
     border-radius: 6px;
@@ -185,23 +196,26 @@ select:focus, input:focus {
 }
 
 .btn-agregar {
+    /* Uso el color verde para el botón que agrega stock. */
     background: #48bb78;
     color: white;
 }
 
 .btn-retirar {
+    /* Uso el color rojo para el botón que retira stock. */
     background: #fc8181;
     color: white;
 }
 
 .btn-reset {
+    /* Hago que el botón de reinicio ocupe todo el ancho. */
     background: #718096;
     color: white;
     width: 100%;
     margin-top: 10px;
 }
 
-/* Footer */
+/* Acá separo el pie de página del contenido y centro el texto. */
 footer {
     margin-top: 30px;
     padding-top: 20px;
@@ -210,7 +224,7 @@ footer {
     color: #718096;
 }
 
-/* Responsive */
+/* Si la pantalla es mediana, muestro menos columnas y apilo los botones. */
 @media (max-width: 768px) {
     .container {
         padding: 15px;
@@ -230,6 +244,7 @@ footer {
 }
 
 @media (max-width: 480px) {
+    /* En teléfonos dejo una tarjeta por fila y achico el título. */
     .grid {
         grid-template-columns: 1fr;
     }
